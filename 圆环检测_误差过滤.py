@@ -57,7 +57,7 @@ while True:
         frame_copy = frame.copy()  # 复制一份原始帧用于绘制结果
 
         for cnt in contours:
-            if 10000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
+            if 20000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
                 ellipse = cv2.fitEllipse(cnt)  # 拟合椭圆
                 (center_x, center_y), (major_axis, minor_axis), angle = ellipse
                 print(center_x, center_y)
@@ -99,10 +99,10 @@ while True:
     std_x1 = np.std(center_x_list1)
     std_y1 = np.std(center_y_list1)
 
-    send_data("center_x_mean")
-    send_data(str(center_x_mean1))
-    send_data("\ncenter_y_mean")
-    send_data(str(center_y_mean1))
+    send_data("center_x_mean: ")
+    send_data(str(center_x_mean1)+"\n")
+    send_data("center_y_mean: ")
+    send_data(str(center_y_mean1)+"\n")
 
     if len(center_x_list1) > 1 and len(center_y_list1) > 1:
         print(f'Mean X1: {center_x_mean1}')  # 输出x坐标的均值
@@ -115,7 +115,7 @@ while True:
     end_time = time.time()
     run_time = end_time - start_time
     print("代码运行时间：", run_time, "秒")
-    
+
     '''
     plt.scatter(center_x_list1, center_y_list1)
     plt.title("Scatter plot of coordinates1")
