@@ -4,10 +4,10 @@ import numpy as np
 # 定义蓝色、红色、绿色的HSV值范围
 blue_lower = np.array([100, 50, 50])
 blue_upper = np.array([130, 255, 255])
-red_lower = np.array([0, 50, 50])
-red_upper = np.array([10, 255, 255])
-green_lower = np.array([50, 50, 50])
-green_upper = np.array([70, 255, 255])
+red_lower = np.array([29, 128, 191])
+red_upper = np.array([180, 255, 255])
+green_lower = np.array([67, 32, 142])
+green_upper = np.array([94, 255, 200])
 
 # 打开摄像头
 cap = cv2.VideoCapture(1)
