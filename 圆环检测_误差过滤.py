@@ -30,6 +30,7 @@ def receive_data():  # 串口接收数据
 
 
 while True:
+    start_time = time.time()
     cap = cv2.VideoCapture(0)  # 打开摄像头
     new_width = 1280
     new_height = 960
@@ -42,6 +43,7 @@ while True:
 
     while True:
         ret, frame = cap.read()  # 读取视频帧
+        cv2.waitKey(1)
         kernel = np.ones((13, 13), np.uint8)
         img_dilation = cv2.dilate(frame, kernel, iterations=2)  # 膨胀操作
         img_erosion = cv2.erode(frame, kernel, iterations=2)  # 腐蚀操作
@@ -55,7 +57,7 @@ while True:
         frame_copy = frame.copy()  # 复制一份原始帧用于绘制结果
 
         for cnt in contours:
-            if 30000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
+            if 10000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
                 ellipse = cv2.fitEllipse(cnt)  # 拟合椭圆
                 (center_x, center_y), (major_axis, minor_axis), angle = ellipse
                 print(center_x, center_y)
@@ -77,12 +79,14 @@ while True:
     print(std_x, std_y)
     print(f'Mean X: {center_x_mean}')  # 输出x坐标的均值
     print(f'Mean Y: {center_y_mean}')  # 输出y坐标的均值
+    '''
     plt.scatter(center_x_list, center_y_list)
     plt.title("Scatter plot of coordinates")
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.show()
 
+    '''
     for i, j in zip(center_x_list, center_y_list):
         distance_x = abs(i - center_x_mean)
         distance_y = abs(j - center_y_mean)
@@ -108,13 +112,17 @@ while True:
 
     else:
         print("Insufficient data points.")
-
+    end_time = time.time()
+    run_time = end_time - start_time
+    print("代码运行时间：", run_time, "秒")
+    
+    '''
     plt.scatter(center_x_list1, center_y_list1)
     plt.title("Scatter plot of coordinates1")
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.show()
-    time.sleep(4)
-    plt.close()
-
+    #time.sleep(4)
+    #plt.close()
+    '''
 
