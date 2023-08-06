@@ -18,7 +18,7 @@ cv2.createTrackbar('Value Lower', 'Threshold Editor', 0, 255, nothing)
 cv2.createTrackbar('Value Upper', 'Threshold Editor', 255, 255, nothing)
 
 # 打开摄像头
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     # 读取摄像头画面

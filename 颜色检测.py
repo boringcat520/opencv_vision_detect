@@ -4,13 +4,13 @@ import numpy as np
 # 定义蓝色、红色、绿色的HSV值范围
 blue_lower = np.array([100, 50, 50])
 blue_upper = np.array([130, 255, 255])
-red_lower = np.array([29, 128, 191])
+red_lower = np.array([27, 97, 228])
 red_upper = np.array([180, 255, 255])
-green_lower = np.array([67, 32, 142])
-green_upper = np.array([94, 255, 200])
+green_lower = np.array([54, 47, 35])
+green_upper = np.array([89, 255, 255])
 
 # 打开摄像头
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 # 检查摄像头是否成功打开
 if not cap.isOpened():
@@ -48,7 +48,7 @@ while True:
         color = "green"
     else:
         color = "unkonw"
-
+    print(blue_pixels, red_pixels, green_pixels)
     # 在画面中心显示检测结果
     cv2.putText(frame, color, (center_x-50, center_y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     cv2.rectangle(frame, (center_x-50, center_y-50), (center_x+50, center_y+50), (0, 255, 0), 2)
