@@ -44,7 +44,7 @@ while True:
     frame_copy = frame.copy()  # 复制一份原始帧用于绘制结果
 
     for cnt in contours_right:#右边
-        if 5000 < cv2.contourArea(cnt) < 40000:  # 选择面积满足条件的轮廓
+        if 6000 < cv2.contourArea(cnt) < 40000:  # 选择面积满足条件的轮廓
 
             (right_center_x, right_center_y), (a, b), angle = cv2.fitEllipse(cnt)
             #cv2.ellipse(frame_copy, ellipse, (0, 0, 255), 2)  # 在复制的帧上绘制椭圆
@@ -56,7 +56,7 @@ while True:
             #print(f'Circle Center: ({center_x}, {center_y})')
 
     for cnt in contours_left:#左边
-        if 6000 < cv2.contourArea(cnt) < 30000:  # 选择面积满足条件的轮廓
+        if 7000 < cv2.contourArea(cnt) < 30000:  # 选择面积满足条件的轮廓
             ellipse = cv2.fitEllipse(cnt)  # 拟合椭圆
             cv2.ellipse(frame_copy, ellipse, (0, 0, 255), 2)  # 在复制的帧上绘制椭圆
             (left_center_x, left_center_y), _, _ = ellipse

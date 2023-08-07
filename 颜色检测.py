@@ -4,7 +4,7 @@ import numpy as np
 # 定义蓝色、红色、绿色的HSV值范围
 blue_lower = np.array([100, 50, 50])
 blue_upper = np.array([130, 255, 255])
-red_lower = np.array([27, 97, 228])
+red_lower = np.array([0, 47, 177])
 red_upper = np.array([180, 255, 255])
 green_lower = np.array([54, 47, 35])
 green_upper = np.array([89, 255, 255])

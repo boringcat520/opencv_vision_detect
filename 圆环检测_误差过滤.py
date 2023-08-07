@@ -57,7 +57,7 @@ while True:
         frame_copy = frame.copy()  # 复制一份原始帧用于绘制结果
 
         for cnt in contours:
-            if 20000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
+            if 15000 < cv2.contourArea(cnt) < 60000:  # 选择面积满足条件的轮廓
                 ellipse = cv2.fitEllipse(cnt)  # 拟合椭圆
                 (center_x, center_y), (major_axis, minor_axis), angle = ellipse
                 print(center_x, center_y)
