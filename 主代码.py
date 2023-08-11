@@ -212,7 +212,7 @@ def color_det():  # 颜色检测
     while True:
         # 读取摄像头画面
         ret, frame = cap.read()
-
+        cv.waitKey(1)
         # 获取画面中心100*100区域
         height, width, _ = frame.shape
         center_x, center_y = int(width/2), int(height/2)
@@ -252,7 +252,8 @@ def color_det():  # 颜色检测
             break
 
         # 释放摄像头资源
-        cap.release()
+    
+    cap.release()
 
     # 关闭所有OpenCV创建的窗口
     cv.destroyAllWindows()
@@ -403,8 +404,8 @@ def main():  # 主函数
             circle_det()
         if request == b'3':
             process_video_mass()
-        if request == 4:
-            print('4')
+        if request == b'4':
+            color_det()
         if request == 3:
             print('5')
 
@@ -415,3 +416,4 @@ if __name__ == '__main__':
     main()
     # request=receive_data()
     # print(request)
+    #color_det()
