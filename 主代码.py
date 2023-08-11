@@ -254,8 +254,8 @@ def color_det():  # 颜色检测
         # 释放摄像头资源
         cap.release()
 
-# 关闭所有OpenCV创建的窗口
-cv.destroyAllWindows()
+    # 关闭所有OpenCV创建的窗口
+    cv.destroyAllWindows()
 
 def line_det():  # 直线检测
     cap = cv.VideoCapture(0)  # 打开摄像头
