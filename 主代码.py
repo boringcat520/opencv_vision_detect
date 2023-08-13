@@ -234,10 +234,13 @@ def color_det():  # 颜色检测
         # 判断哪种颜色占据了最多的像素数量
         if blue_pixels > red_pixels and blue_pixels > green_pixels:
             color = "blue"
+            send_data("3")
         elif red_pixels > blue_pixels and red_pixels > green_pixels:
             color = "red"
+            send_data("1")
         elif green_pixels > blue_pixels and green_pixels > red_pixels:
             color = "green"
+            send_data("2")
         else:
             color = "unkonw"
         print(blue_pixels, red_pixels, green_pixels)
@@ -339,10 +342,14 @@ def line_det():  # 直线检测
                 # 计算直线的角度
             slope = (right_point_y - left_point_y) / (right_point_x - left_point_x)
             angle = np.arctan(slope) * 180 / np.pi
-
+            '''
             print(f'Left Point: ({left_point_x}, {left_point_y})')
             print(f'Right Point: ({right_point_x}, {right_point_y})')
             print(f'Angle: {angle}')
+            
+            '''
+            send_data(str(angle))  # 串口发送数据
+
             if cv.waitKey(1) & 0xFF == ord('q'):  # 如果按下 'q' 键则退出循环
                 break
 
@@ -406,8 +413,8 @@ def main():  # 主函数
             process_video_mass()
         if request == b'4':
             color_det()
-        if request == 3:
-            print('5')
+        if request == b'5':
+            line_det()
 
 
 if __name__ == '__main__':
